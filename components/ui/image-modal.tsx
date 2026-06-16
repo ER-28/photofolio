@@ -30,16 +30,16 @@ export function ImageModal({ src, alt, onClose }: { src: string; alt: string; on
       >
         <X className="h-8 w-8" />
       </button>
-      <div className="relative max-h-full max-w-full animate-in fade-in zoom-in duration-300">
+       <div className="relative h-[90vh] w-full max-w-5xl animate-in fade-in zoom-in duration-300">
          <Image
            src={src}
            alt={alt}
-           className="max-h-[90vh] max-w-full object-contain select-none"
+           className="object-contain select-none"
            priority
            sizes="100vw"
            fill
          />
-      </div>
+       </div>
     </div>,
     document.body
   );
