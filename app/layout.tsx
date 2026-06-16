@@ -6,9 +6,9 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: "Lylian Guerra--Rago | Photography Portfolio",
+  title: "Lylian Guerra--Rago | Photography",
   description:
-    "Photography portfolio of Lylian Guerra--Rago — street, concert, nightlife & portrait photography from Lyon, France.",
+    "Photography portfolio — street, concert, nightlife, portrait & automotive photography from Lyon, France.",
 };
 
 export default function RootLayout({
@@ -18,42 +18,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen flex flex-col antialiased">
-        <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md dark:border-white/10 dark:bg-black/80">
+      <body className="min-h-screen flex flex-col font-sans">
+        <header className="sticky top-0 z-50 border-b border-black/5 bg-white/80 backdrop-blur-md">
           <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
             <Link href="/" className="text-lg font-light tracking-wide">
               Lylian Guerra--Rago
             </Link>
-            <ul className="flex items-center gap-8 text-sm font-light tracking-wide text-zinc-600 dark:text-zinc-400">
+            <ul className="flex items-center gap-8 text-sm font-light text-zinc-600">
               <li>
-                <Link
-                  href="/"
-                  className="transition-colors hover:text-black dark:hover:text-white"
-                >
+                <Link href="/" className="hover:text-black transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/gallery/"
-                  className="transition-colors hover:text-black dark:hover:text-white"
-                >
+                <Link href="/gallery/" className="hover:text-black transition-colors">
                   Gallery
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/about/"
-                  className="transition-colors hover:text-black dark:hover:text-white"
-                >
+                <Link href="/about/" className="hover:text-black transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/contact/"
-                  className="transition-colors hover:text-black dark:hover:text-white"
-                >
+                <Link href="/contact/" className="hover:text-black transition-colors">
                   Contact
                 </Link>
               </li>
@@ -63,19 +51,17 @@ export default function RootLayout({
 
         <main className="flex-1">{children}</main>
 
-        <footer className="border-t border-black/5 py-8 dark:border-white/10">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 text-xs font-light tracking-wide text-zinc-500">
+        <footer className="border-t border-black/5 py-8">
+          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 text-xs font-light text-zinc-500">
             <p>&copy; {new Date().getFullYear()} Lylian Guerra--Rago</p>
-            <div className="flex gap-6">
-              <a
-                href="https://instagram.com/lyliangr"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-black dark:hover:text-white"
-              >
-                Instagram
-              </a>
-            </div>
+            <a
+              href="https://instagram.com/lyliangr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-black transition-colors"
+            >
+              Instagram
+            </a>
           </div>
         </footer>
       </body>
