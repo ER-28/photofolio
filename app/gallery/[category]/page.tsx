@@ -3,6 +3,7 @@ import Link from "next/link";
 import fs from "fs";
 import path from "path";
 import { categories, getCategoryBySlug } from "@/lib/data";
+import PhotoGrid from "@/components/ui/photo-grid";
 
 const IMG_EXT = [".jpg", ".jpeg", ".png", ".webp", ".gif"];
 
@@ -59,21 +60,10 @@ export default async function CategoryPage({ params }: Props) {
 
       {images.length === 0 ? (
         <p className="text-sm text-zinc-400">
-          No photos yet. Add images to <code className="bg-zinc-100 px-1.5 py-0.5 text-xs">public/images/{category}/</code> and rebuild.
+          No photos yet. Add images to <code className="bg-zinc-100 px-1.5 py-0.5 text-xs">public/images/photos/{category}/</code> and rebuild.
         </p>
       ) : (
-        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {images.map((src) => (
-            <div key={src} className="mb-4 break-inside-avoid">
-              <img
-                src={src}
-                alt={cat.name}
-                className="w-full bg-zinc-100"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
+        <PhotoGrid images={images} categoryName={cat.name} />
       )}
     </section>
   );
