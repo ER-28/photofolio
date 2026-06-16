@@ -21,13 +21,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function getImages(slug: string): string[] {
-  const dir = path.join(process.cwd(), "public", "images", slug);
+  const dir = path.join(process.cwd(), "public", "images", "photos" ,slug);
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
     .filter((f) => IMG_EXT.includes(path.extname(f).toLowerCase()))
     .sort()
-    .map((f) => `/images/${slug}/${f}`);
+    .map((f) => `/photofolio/images/photos/${slug}/${f}`);
 }
 
 export default async function CategoryPage({ params }: Props) {

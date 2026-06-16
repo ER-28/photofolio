@@ -11,7 +11,7 @@ const categories = [
   {
     name: "Bar & Nightclub",
     slug: "nightlife",
-    image: "/photofolio/images/bar.jpg",
+    image: "/photofolio/images/nightlife.jpg",
     description: "Nightlife and evening vibes",
   },
   {
@@ -23,7 +23,7 @@ const categories = [
   {
     name: "Auto / Moto",
     slug: "auto_moto",
-    image: "/photofolio/images/auto.jpg",
+    image: "/photofolio/images/auto_moto.jpg",
     description: "Intimate character studies",
   },
 ];
