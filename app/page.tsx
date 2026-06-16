@@ -5,25 +5,25 @@ const categories = [
   {
     name: "Street",
     slug: "street",
-    image: "https://picsum.photos/seed/street1/800/1200",
+    image: "/photofolio/images/street.jpg",
     description: "Candid moments from city streets",
-  },
-  {
-    name: "Concert",
-    slug: "concert",
-    image: "https://picsum.photos/seed/concert1/1200/800",
-    description: "Live music and performances",
   },
   {
     name: "Bar & Nightclub",
     slug: "nightlife",
-    image: "https://picsum.photos/seed/nightlife1/1200/800",
+    image: "/photofolio/images/bar.jpg",
     description: "Nightlife and evening vibes",
   },
   {
     name: "Portrait",
     slug: "portrait",
-    image: "https://picsum.photos/seed/portrait1/800/1200",
+    image: "/photofolio/images/portrait.jpg",
+    description: "Intimate character studies",
+  },
+  {
+    name: "Auto / Moto",
+    slug: "auto_moto",
+    image: "/photofolio/images/auto.jpg",
     description: "Intimate character studies",
   },
 ];
@@ -32,27 +32,27 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-black">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white">
-          <h1 className="mb-6 text-5xl font-extralight tracking-tight sm:text-6xl md:text-7xl">
-            Lylian Guerra--Rago
-          </h1>
-          <p className="mb-4 text-sm font-light tracking-[0.3em] uppercase text-zinc-400">
-            Photography
-          </p>
-          <p className="mb-10 text-lg font-extralight leading-relaxed text-zinc-300">
-            Capturing urban landscapes, live performances, and the human spirit
-            from Lyon, France.
-          </p>
-          <Link
+      <section
+        className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/photofolio/images/hero.jpg')" }}
+    >
+      <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60" />
+      <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white">
+        <h1 className="mb-6 text-5xl font-extralight tracking-tight sm:text-6xl md:text-7xl bg-black/50">
+          Lylian Guerra--Rago
+        </h1>
+        <p className="mb-40 text-lg font-extralight leading-relaxed text-lime-300 bg-black/60">
+          Capturing urban landscapes, live performances, and the human spirit
+          from Lyon, France.
+        </p>
+        <Link
             href="/gallery/"
-            className="inline-block border border-white/30 px-8 py-3 text-sm font-light tracking-widest uppercase transition-all hover:bg-white hover:text-black"
-          >
-            View Portfolio
-          </Link>
-        </div>
-      </section>
+            className="inline-block border border-white/30 px-8 py-3 text-sm font-light tracking-widest uppercase transition-all bg-black/60 hover:bg-white hover:text-black"
+        >
+          View Portfolio
+        </Link>
+      </div>
+    </section>
 
       {/* Categories */}
       <section className="mx-auto max-w-7xl px-6 py-24">
