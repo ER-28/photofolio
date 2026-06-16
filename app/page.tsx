@@ -1,32 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-const categories = [
-  {
-    name: "Street",
-    slug: "street",
-    image: "https://picsum.photos/seed/street1/800/1200",
-    description: "Candid moments from city streets",
-  },
-  {
-    name: "Concert",
-    slug: "concert",
-    image: "https://picsum.photos/seed/concert1/1200/800",
-    description: "Live music and performances",
-  },
-  {
-    name: "Bar & Nightclub",
-    slug: "nightlife",
-    image: "https://picsum.photos/seed/nightlife1/1200/800",
-    description: "Nightlife and evening vibes",
-  },
-  {
-    name: "Portrait",
-    slug: "portrait",
-    image: "https://picsum.photos/seed/portrait1/800/1200",
-    description: "Intimate character studies",
-  },
-];
+import { categories } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -64,7 +38,7 @@ export default function Home() {
             Browse collections by category
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {categories.map((cat) => (
             <Link
               key={cat.slug}
@@ -72,11 +46,11 @@ export default function Home() {
               className="group relative aspect-[3/4] overflow-hidden bg-zinc-100 dark:bg-zinc-900"
             >
               <Image
-                src={cat.image}
+                src={`/images/${cat.slug}.jpg`}
                 alt={cat.name}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                sizes="(max-width: 640px) 100vw, 20vw"
               />
               <div className="absolute inset-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/40" />
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100">
