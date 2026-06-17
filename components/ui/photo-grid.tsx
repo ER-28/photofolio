@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ImageModal } from "@/components/ui/image-modal";
+import ProgressiveImage from "@/components/ui/progressive-image";
 import { getOptimizedImagePath } from "@/lib/utils";
 
 export default function PhotoGrid({ images, categoryName }: { images: string[]; categoryName: string }) {
@@ -17,16 +18,11 @@ export default function PhotoGrid({ images, categoryName }: { images: string[]; 
             className="mb-4 break-inside-avoid cursor-zoom-in group relative overflow-hidden bg-zinc-100 rounded-sm"
             onClick={() => setSelectedImage(src)}
           >
-            <Image
-              src={getOptimizedImagePath(src, 'thumb')}
+            <ProgressiveImage
+              src={src}
               alt={`${categoryName} photo ${index + 1}`}
-              width={500}
-              height={750}
               className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
-              loading={index < 6 ? "eager" : "lazy"}
               priority={index < 3}
-              placeholder="blur"
-              blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN8/+ZNPQAIXwMwS9S6uAAAAACH5C+B7O9oAAAAAUpSclS5vS8AAAA"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>

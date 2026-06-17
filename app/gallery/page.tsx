@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { categories } from "@/lib/data";
-import {getOptimizedImagePath} from "@/lib/utils";
+import { getOptimizedImagePath } from "@/lib/utils";
+import ProgressiveImage from "@/components/ui/progressive-image";
 
 export const metadata: Metadata = {
   title: "Gallery | Lylian Guerra--Rago",
