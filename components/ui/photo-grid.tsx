@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { ImageModal } from "@/components/ui/image-modal";
+import { getOptimizedImagePath } from "@/lib/utils";
 
 export default function PhotoGrid({ images, categoryName }: { images: string[]; categoryName: string }) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -17,7 +18,7 @@ export default function PhotoGrid({ images, categoryName }: { images: string[]; 
             onClick={() => setSelectedImage(src)}
           >
             <Image
-              src={src}
+              src={getOptimizedImagePath(src, 'thumb')}
               alt={`${categoryName} photo ${index + 1}`}
               width={500}
               height={750}
@@ -32,13 +33,14 @@ export default function PhotoGrid({ images, categoryName }: { images: string[]; 
         ))}
       </div>
 
-      {selectedImage && (
-        <ImageModal 
-          src={selectedImage} 
-          alt={categoryName} 
-          onClose={() => setSelectedImage(null)} 
-        />
-      )}
+       {selectedImage && (
+         <ImageModal 
+           src={getOptimizedImagePath(selectedImage, 'hd')} 
+           alt={categoryName} 
+           onClose={() => setSelectedImage(null)} 
+         />
+       )}
+
     </>
   );
 }
