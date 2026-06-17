@@ -3,7 +3,6 @@ import fs from 'fs/promises';
 import path from 'path';
 
 const INPUT_DIR = 'public/images';
-const PHOTOS_DIR = 'public/images/photos';
 const OUTPUT_DIR = 'public/images/optimized';
 const THUMBNAILS_DIR = path.join(OUTPUT_DIR, 'thumbnails');
 const HD_DIR = path.join(OUTPUT_DIR, 'hd');
@@ -26,8 +25,8 @@ async function processImages(dir, baseDir = INPUT_DIR) {
       const categoryDir = path.dirname(relativePath);
       const fileName = path.parse(entry.name).name;
 
-      const thumbPath = path.join(THUMBNAILS_DIR, categoryDir, `${fileName}.webp`);
-      const hdPath = path.join(HD_DIR, categoryDir, `${fileName}.webp`);
+      const thumbPath = path.join(THUMBNAILS_DIR, `${fileName}.webp`);
+      const hdPath = path.join(HD_DIR, `${fileName}.webp`);
 
       await ensureDir(path.dirname(thumbPath));
       await ensureDir(path.dirname(hdPath));

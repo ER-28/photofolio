@@ -24,9 +24,8 @@ export function getOptimizedImagePath(src: string, size: 'thumb' | 'hd'): string
   // Handle images in category folders: /images/photos/category/image.jpg
   const parts = normalizedSrc.split('/');
   const fileName = parts[parts.length - 1];
-  const category = parts[parts.length - 2];
   
   const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
   
-  return `/photofolio/images/optimized/${size === 'thumb' ? 'thumbnails' : 'hd'}/${category}/${nameWithoutExt}.webp`;
+  return `/photofolio/images/optimized/${size === 'thumb' ? 'thumbnails' : 'hd'}/${nameWithoutExt}.webp`;
 }

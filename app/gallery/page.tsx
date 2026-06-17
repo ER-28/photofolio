@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { categories } from "@/lib/data";
+import {getOptimizedImagePath} from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Gallery | Lylian Guerra--Rago",
@@ -20,7 +21,7 @@ export default function GalleryPage() {
             className="group relative aspect-[4/3] overflow-hidden bg-zinc-100"
           >
             <img
-              src={`/photofolio/images/${cat.slug}.jpg`}
+              src={getOptimizedImagePath(`/images/${cat.slug}.jpg`, 'thumb')}
               alt={cat.name}
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
             />
