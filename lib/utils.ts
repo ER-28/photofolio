@@ -1,3 +1,10 @@
+import { clsx, type ClassValue } from "clsx"
+import { twMerge } from "tailwind-merge"
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
+
 export function getOptimizedImagePath(src: string, size: 'thumb' | 'hd'): string {
   // Handle paths that start with /photofolio/images/
   const normalizedSrc = src.replace('/photofolio/images/', '/images/');
