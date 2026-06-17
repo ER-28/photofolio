@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getOptimizedImagePath } from "@/lib/utils";
 
 const categories = [
   {
@@ -32,10 +33,11 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section
-        className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/photofolio/images/hero.jpg')" }}
-    >
+        <section
+          className="relative flex min-h-[85vh] items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${getOptimizedImagePath('/images/hero.jpg', 'hd')}')` }}
+      >
+
       <div className="absolute inset-0 bg-linear-to-b from-black/40 via-transparent to-black/60" />
       <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white">
         <h1 className="mb-6 text-5xl font-extralight tracking-tight sm:text-6xl md:text-7xl bg-black/50">
@@ -72,7 +74,7 @@ export default function Home() {
               className="group relative aspect-[3/4] overflow-hidden bg-zinc-100 dark:bg-zinc-900"
             >
               <Image
-                src={cat.image}
+                src={getOptimizedImagePath(cat.image, 'thumb')}
                 alt={cat.name}
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"

@@ -2,7 +2,8 @@ import sharp from 'sharp';
 import fs from 'fs/promises';
 import path from 'path';
 
-const INPUT_DIR = 'public/images/photos';
+const INPUT_DIR = 'public/images';
+const PHOTOS_DIR = 'public/images/photos';
 const OUTPUT_DIR = 'public/images/optimized';
 const THUMBNAILS_DIR = path.join(OUTPUT_DIR, 'thumbnails');
 const HD_DIR = path.join(OUTPUT_DIR, 'hd');
@@ -11,15 +12,17 @@ async function ensureDir(dir) {
   await fs.mkdir(dir, { recursive: true });
 }
 
-async function processImages(dir) {
+async function processImages(dir, baseDir = INPUT_DIR) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
 
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);
     if (entry.isDirectory()) {
-      await processImages(fullPath);
+      // Skip the optimized directory to avoid infinite recursion
+      if (entry.name === 'optimized') continue;
+      await processImages(fullPath, baseDir);
     } else if (entry.isFile() && /\.(jpg|jpeg|png|webp)$/i.test(entry.name)) {
-      const relativePath = path.relative(INPUT_DIR, fullPath);
+      const relativePath = path.relative(baseDir, fullPath);
       const categoryDir = path.dirname(relativePath);
       const fileName = path.parse(entry.name).name;
 

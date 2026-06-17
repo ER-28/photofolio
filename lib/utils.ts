@@ -6,16 +6,22 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getOptimizedImagePath(src: string, size: 'thumb' | 'hd'): string {
-  // Handle paths that start with /photofolio/images/
-  const normalizedSrc = src.replace('/photofolio/images/', '/images/');
+  // Normalize path: remove '/photofolio' if it exists at the start
+  const normalizedSrc = src.startsWith('/photofolio') ? src.replace('/photofolio', '') : src;
   
   if (!normalizedSrc.includes('/photos/')) {
-    // For root images like hero.jpg, we can just return the original 
-    // or we could expand the optimization script to handle them.
-    // For now, if it's not in /photos/, return original.
+    // For root images like /images/hero.jpg or /images/street.jpg
+    if (normalizedSrc.startsWith('/images/')) {
+      const parts = normalizedSrc.split('/');
+      const fileName = parts[parts.length - 1];
+      const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
+      
+      return `/photofolio/images/optimized/${size === 'thumb' ? 'thumbnails' : 'hd'}/${nameWithoutExt}.webp`;
+    }
     return src;
   }
 
+  // Handle images in category folders: /images/photos/category/image.jpg
   const parts = normalizedSrc.split('/');
   const fileName = parts[parts.length - 1];
   const category = parts[parts.length - 2];
